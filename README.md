@@ -59,3 +59,11 @@ Use the sidebar to select time frame and topic.
 Click the Fetch Latest AI News button to get summarized AI news.
 
 Chat with the bot in the main interface.
+
+### Credits / Acknowledgements
+
+This project was inspired and guided by [Krish Naik] through the course: https://www.udemy.com/course/complete-agentic-ai-bootcamp-with-langgraph-and-langchain/learn/lecture/50817089?start=0#overview
+Special thanks to the instructor for the comprehensive guidance and resources.
+
+##### License
+This project is licensed under the MIT License.
