@@ -43,11 +43,17 @@ class DisplayResultStreamlit:
 
         elif usecase == "AI News":
             frequency = self.user_message
+            name1=frequency.split(" ")[0]
+            name2=frequency.split(" ")[1]
+            name=f"{name1}_{name2}"
+            # print(frequency)
+            # print(name)
+             # Prepare state and invoke the graph
             with st.spinner("Fetching and summarizing news... ⏳"):
                 result = graph.invoke({"messages": frequency})
                 try:
                     # Read the markdown file
-                    AI_NEWS_PATH = f"./AINews/{frequency.lower()}_summary.md"
+                    AI_NEWS_PATH = f"./AINews/{name}_summary.md"
                     with open(AI_NEWS_PATH, "r") as file:
                         markdown_content = file.read()
 

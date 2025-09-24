@@ -42,13 +42,19 @@ class LoadStreamlitUI:
                 with st.sidebar:
                     time_frame = st.selectbox(
                         "Select time frame",
-                        ["Daily", "Weekly", "Monthly"],
+                        ["daily", "weekly", "monthly"],
+                        index=0
+                    )
+                    topic = st.selectbox(
+                        "🗂️ Select Topic",
+                        ["all", "healthcare", "finance", "technology", "education", "entertainment", "politics", "environment", "business"],
                         index=0
                     )
 
                 if st.button("Fetch AI News", use_container_width=True):
                     st.session_state.IsFetchButtonClicked = True
                     st.session_state.timeframe = time_frame
+                    st.session_state.topic = topic
 
         return self.user_controls
 

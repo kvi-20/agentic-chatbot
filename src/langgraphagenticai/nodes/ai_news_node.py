@@ -22,14 +22,29 @@ class AINewsNode:
         Returns:
             dict: Updated state with 'news_data' key containing fetched news.
         """
+        # print(state)
+        content = state['messages'][0].content.lower()
+        # print(content)
 
-        frequency = state['messages'][0].content.lower()
+        frequency, topic = content.split(" ")
+        # frequency = frequncy.lower()
         self.state['frequency'] = frequency
+        self.state['topic'] = topic
+        print(frequency, topic)
+
+        # frequency = state['messages'][0].content.lower()
+        # self.state['frequency'] = frequency
+        # topic = state['messages'][1].content.lower()
+        # self.state['topic'] = topic
+
         time_range_map = {'daily': 'd', 'weekly': 'w', 'monthly': 'm', 'year': 'y'}
         days_map = {'daily': 1, 'weekly': 7, 'monthly': 30, 'year': 366}
+        topic_map = {"all": "General", "healthcare": "healthcare", "finance": "finance", "technology": "technology",
+                     "education": "education", "entertainment": "entertainment", "politics": "politics",
+                     "environment": "environment", "business": "business"}
 
         response = self.tavily.search(
-            query="Top Artificial Intelligence (AI) technology news India and globally",
+            query=f"Top {topic_map.get(topic)} news India and globally",
             topic="news",
             time_range=time_range_map[frequency],
             include_answer="advanced",
@@ -57,7 +72,7 @@ class AINewsNode:
         news_items = self.state['news_data']
 
         prompt_template = ChatPromptTemplate.from_messages([
-            ("system", """Summarize AI news articles into markdown format. For each item include:
+            ("system", """Summarize news articles into markdown format. For each item include:
             - Date in **YYYY-MM-DD** format in IST timezone
             - Concise sentences summary from latest news
             - Sort news by date wise (latest first)
@@ -80,8 +95,11 @@ class AINewsNode:
     
     def save_result(self,state):
         frequency = self.state['frequency']
+        topic = self.state['topic']
+        name=f"{frequency}_{topic}"
+
         summary = self.state['summary']
-        filename = f"./AINews/{frequency}_summary.md"
+        filename = f"./AINews/{name}_summary.md"
         with open(filename, 'w') as f:
             f.write(f"# {frequency.capitalize()} AI News Summary\n\n")
             f.write(summary)
