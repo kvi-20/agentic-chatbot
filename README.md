@@ -1,4 +1,4 @@
-### End to end project Agentic Project
+### End to end Agentic AI Project
 
 # End-to-End AI Chatbot
 
@@ -62,8 +62,7 @@ Chat with the bot in the main interface.
 
 ### Credits / Acknowledgements
 
-This project was inspired and guided by [Krish Naik] through the course: https://www.udemy.com/course/complete-agentic-ai-bootcamp-with-langgraph-and-langchain/learn/lecture/50817089?start=0#overview
-Special thanks to the instructor for the comprehensive guidance and resources.
+This project was inspired and guided by [Krish Naik] through the course: https://www.udemy.com/course/complete-agentic-ai-bootcamp-with-langgraph-and-langchain/
 
 ##### License
 This project is licensed under the MIT License.
