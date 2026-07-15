@@ -37,15 +37,15 @@ git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 ```
 
-2. Create a Conda environment:
+2. Create a uv environment:
 ```bash
-conda create -n env python=3.12
-conda activate env
+uv venv
+.venv\Scripts\activate 
 ```
 
 3.  Install dependencies:
 ```bash
-conda install --file requirements.txt
+uv pip install -r requirements.txt
 ```
 
 4.  Run the Web Chatbot
