@@ -19,7 +19,7 @@ def load_langgraph_agenticai_app():
     # print(user_input)
 
     if not user_input:
-        st.error("Error: Failed to load user input from the UI.")
+        st.error("Error: Failed to load user input from the UI.", icon="⚠️")
         return
     
     if st.session_state.IsFetchButtonClicked:
@@ -41,17 +41,17 @@ def load_langgraph_agenticai_app():
             model=obj_llm_config.get_llm_model()
 
             if not model:
-                st.error("Error: LLM model could not be initialized")
+                st.error("Error: LLM model could not be initialized", icon="⚠️")
                 return
-            
+
             # Initialize and set up the graph based on use case
             usecase=user_input.get("selected_usecase")
             # print(usecase)
 
             if not usecase:
-                    st.error("Error: No use case selected.")
+                    st.error("Error: No use case selected.", icon="⚠️")
                     return
-            
+
             ## Graph Builder
             try:
                  graph_builder=GraphBuilder(model=model)
@@ -59,9 +59,9 @@ def load_langgraph_agenticai_app():
                  print(user_message)
                  DisplayResultStreamlit(usecase,graph,user_message).display_result_on_ui()
             except Exception as e:
-                 st.error(f"Error: Graph set up failed here - {e}")
+                 st.error(f"Error: Graph set up failed here - {e}", icon="🚫")
                  return
 
         except Exception as e:
-             st.error(f"Error: Graph set up failed- {e}")
-             return   
+             st.error(f"Error: Graph set up failed- {e}", icon="🚫")
+             return
